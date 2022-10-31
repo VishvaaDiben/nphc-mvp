@@ -1,0 +1,18 @@
+{
+  "employees": [
+    [
+      {
+        "id": "eid123",
+        "login": "1234",
+        "name": "test",
+        "salary": "1600"
+      },
+      {
+        "id": "eid213",
+        "login": "43",
+        "name": "tset",
+        "salary": "1400"
+      }
+    ]
+  ]
+}
