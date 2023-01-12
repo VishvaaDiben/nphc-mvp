@@ -105,7 +105,7 @@ export default function CSVParser() {
   //API
   const getEmployees = () => {
     axios
-      .get("http://localhost:4000/employees")
+      .get("http://localhost:3001/user/list")
       .then((resp) => {
         setGlobalCSV(resp.data.flat());
       })
@@ -122,7 +122,7 @@ export default function CSVParser() {
 
   const uploadEmployees = () => {
     axios
-      .post("http://localhost:4000/employees", globalCsv)
+      .post("http://localhost:3001/user/add", globalCsv)
       .then(function (response) {
         return response.data;
       })
@@ -138,41 +138,6 @@ export default function CSVParser() {
       });
   };
 
-  // const updateEmployees = () => {
-  //   axios
-  //     .put("http://localhost:4000/employees", globalCsv)
-  //     .then(function (response) {
-  //       console.log(response);
-  //       return response.data;
-  //     })
-  //     .then(() => getEmployees())
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-
-  // const deleteAll = () => {
-  //   axios
-  //     .delete(`http://localhost:4000/employees/delete`)
-  //     .then((resp) => {
-  //       console.log("delete all resp", resp.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-
-  // const getOneEmployee = () => {
-  //   axios
-  //     .get("http://localhost:4000/employees/")
-  //     .then((resp) => {
-  //       console.log(resp.data);
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // };
-
   const patchRequest = (record) => {
     const update = {
       id: record.id,
@@ -180,7 +145,7 @@ export default function CSVParser() {
       name: record.name,
     };
     axios
-      .patch(`http://localhost:4000/employees/${record.id}`, update)
+      .patch(`http://localhost:3001/user/update/${record.id}`, update)
       .then((resp) => {
       })
       .then(() => getEmployees())
@@ -202,7 +167,7 @@ export default function CSVParser() {
       okType: "danger",
       onOk: () => {
         axios
-          .delete(`http://localhost:4000/employees/${record.id}`)
+          .delete(`http://localhost:3001/user/delete/${record.id}`)
           .then((resp) => {
           })
           .then(() => getEmployees())
